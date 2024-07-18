@@ -20,8 +20,6 @@ if ($err) {
 } else {
     $data = json_decode($response, true);
     $currencies = $data['supported_codes'];
-    // Now you can use $currencies to populate your select options
 }
-
 ?> 
 

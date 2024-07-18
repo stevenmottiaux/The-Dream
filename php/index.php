@@ -31,7 +31,7 @@ include_once('./swapcurrencies.php');
 <body>
     <div class="container">
     <h1>Convertisseur de devises</h1>
-    <a><a href="./connect.php">Retour</a>
+    <h2>Hello</h2>
     <form id="form" action="index.php" method="post">
         <div class="form-group">
             <label for="amount">Montant</label>
