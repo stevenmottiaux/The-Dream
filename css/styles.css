@@ -1,0 +1,27 @@
+body {
+    height: 100vh;
+    width: 100%;
+    margin: auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    height: 100vh;
+}
+
+#form {
+    width: 50%;
+}
+
+.btn-primary {
+    margin-top: 20px;
+}
+
+.result {
+    margin-top: 20px;
+}
