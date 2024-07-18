@@ -3,6 +3,16 @@ require_once('./api.php');
 $showResult = false; // Par défaut, pas de div result
 // Vérifier si le formulaire a été soumis
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $amountValue = $_POST['amount'];
+   
+    if (!is_numeric($amountValue)) {
+        // Afficher un message d'erreur ou rediriger vers une page d'erreur
+        echo "<script type='text/javascript'>alert('Veuillez entrer un montant valide.');
+        window.location.href = 'index.php';</script>";
+        exit;
+}
+}
 
 if (isset($_POST['amount'])) {
 	$amount = $_POST['amount'];

@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 // Vérifier si les valeurs sont déjà enregistrées en session
 if (!isset($_SESSION['currencies'])) {
     // Appel à l'API pour obtenir les valeurs
@@ -14,6 +15,8 @@ if (!isset($_SESSION['currencies'])) {
 
 include_once('./convert.php');
 include_once('./swapcurrencies.php');
+
+
 ?>
 
 <!DOCTYPE html>
@@ -31,15 +34,14 @@ include_once('./swapcurrencies.php');
 <body>
     <div class="container">
     <h1>Convertisseur de devises</h1>
-    <h2>Hello</h2>
-    <form id="form" action="index.php" method="post">
+    <form id="form"  method="post" action="index.php" role ="form" target="_self">
         <div class="form-group">
             <label for="amount">Montant</label>
-            <input type="text" class="form-control" name="amount" id="amount" placeholder="Ajouter le montant à convertir">
+            <input type="text" required class="form-control" name="amount" id="amount" placeholder="Ajouter le montant à convertir">
         </div>
         <div class=" form-group">
             <label for="from-currency">Devise de départ</label>
-            <select class="form-control" name="from-currency" id="from-currency">
+            <select class="form-control" name="from-currency" id="from-currency" value="<?php if(isset($_POST['from-currency'])){echo $_POST['from-currency'];}?>">
                 <?php
                  foreach ($currencies as $currencyInfo) {
                     $currencyCode = $currencyInfo[0];
@@ -51,7 +53,7 @@ include_once('./swapcurrencies.php');
         </div>
         <div class="form-group">
             <label for="to-currency">Devise finale</label>
-            <select class="form-control" name="to-currency" id="to-currency">
+            <select class="form-control" name="to-currency" id="to-currency" value="<?php if(isset($_POST['to-currency'])){echo $_POST['to-currency'];}?>">
                 <?php
                  foreach ($currencies as $currencyInfo) {
                     $currencyCode = $currencyInfo[0];
@@ -63,12 +65,11 @@ include_once('./swapcurrencies.php');
         </div>
         <button type="submit" class="btn btn-primary">Convertir</button>
     </form>
-    <form method="post" action="swapcurrencies.php">
-        <button type="submit" class="btn btn-primary" name="swapButton">Echanger</button>
-    </form>
     <?php if ($showResult): ?>
     <div class="result">
-        <?php echo $result; ?>
+        <?php 
+        echo ($result);
+        ?>
     </div>
     <?php endif; ?>
     </div>
